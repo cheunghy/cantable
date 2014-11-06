@@ -1,5 +1,6 @@
 module CanTable
   module ControllerInclusion
+    include CanCan::ControllerAdditions
     def can_table(resource)
       table = []
       actions = [:create, :read, :update, :destory]
