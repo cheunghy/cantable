@@ -10,7 +10,7 @@ module CanTable
     def include_operation_permissions(resource, json = nil)
       table = can_table(resource) # like this: [:create,:read]
       operations = table.map do |action|
-        {"method": HTTP_VERBS[action]}
+        {"method" => HTTP_VERBS[action]}
       end
       if json
         json.operation operations
