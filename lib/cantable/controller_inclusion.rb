@@ -1,3 +1,4 @@
+require 'cancancan'
 module CanTable
   module ControllerInclusion
     include CanCan::ControllerAdditions

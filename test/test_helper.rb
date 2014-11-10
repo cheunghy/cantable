@@ -14,4 +14,14 @@ if ActiveSupport::TestCase.method_defined?(:fixture_path=)
   ActiveSupport::TestCase.fixture_path = File.expand_path("../fixtures", __FILE__)
 end
 
-require 'cancancan'
+module ActionController::TestCase::Behavior
+  def options(action, *args)
+    process(action, "OPTIONS", *args)
+  end
+end
+
+module ActionDispatch::Integration::RequestHelpers
+  def options(path, parameters = nil, headers_or_env = nil)
+    process :options, path, parameters, headers_or_env
+  end
+end
