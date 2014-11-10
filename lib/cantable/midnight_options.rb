@@ -42,9 +42,6 @@ require 'pp'
         dispatcher = route.app
 
         env["REQUEST_METHOD"] = "OPTIONS"
-        pp "Here Start"
-        pp params
-        pp "Here Stop"
 
         real_controller = dispatcher.controller(params, false)
         if real_controller
