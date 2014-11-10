@@ -2,7 +2,7 @@ class PhotosController < ApplicationController
   before_action :set_photo, only: [:show, :edit, :update, :destroy]
 
   def options
-    render nothing: true, status: 200
+    self.response_body = "some fuck"
   end
 
   # GET /photos

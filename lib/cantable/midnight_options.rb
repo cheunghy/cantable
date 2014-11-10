@@ -46,7 +46,7 @@ require 'pp'
         real_controller = dispatcher.controller(params, false)
         if real_controller
           env["action_dispatch.request.request_parameters"] = params
-          dispatcher.instance_eval { dispatch(real_controller, action, env) }
+          return dispatcher.instance_eval { dispatch(real_controller, action, env) }
         end
       end
     end
