@@ -34,8 +34,8 @@ require 'pp'
       controller, action = params ? params.values_at(:controller, :action) : [nil, nil]
       raise exception if !controller
 
-      params[:action] = 'options'
-      action = 'options'
+      params[:action] = 'operation'
+      action = 'operation'
       router = route.instance_variable_get(:@router)
       req = router.instance_eval { request_class.new(env) }
       router.recognize(req) do |route, parameters|

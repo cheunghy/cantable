@@ -1,13 +1,9 @@
 class PhotosController < ApplicationController
   before_action :set_photo, only: [:show, :edit, :update, :destroy]
 
-  def options
-    self.response_body = "some fuck"
-  end
-
   # GET /photos
   def index
-    p params
+    pp "called here"
     @photos = Photo.all
   end
 

@@ -17,8 +17,9 @@ module CanTable
 
     public
 
-    def options
-      render nothing: true, status: 200
+    def operation
+      self.response_body = "some good stuff, haha"
+#      render nothing: true, status: 200
       # if params[:id]
       #   resource = resource_class.find(params[:id])
       # end
@@ -35,8 +36,23 @@ module CanTable
 end
 
 if defined? ActionController::Base
+
   ActionController::Base.class_eval do
     include CanTable::ControllerInclusion
-    include CanTable::OptionsAction
   end
+
+  ActionController::Base.descendants.each do |descendant|
+    descendant.class_eval do
+      include CanTable::OptionsAction
+    end
+  end
+
+  ActionController::Base.instance_eval do
+    def inherited(klass)
+      klass.class_eval do
+        include CanTable::OptionsAction
+      end
+    end
+  end
+
 end
