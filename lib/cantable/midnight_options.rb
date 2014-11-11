@@ -40,13 +40,21 @@ require 'pp'
       req = router.instance_eval { request_class.new(env) }
       router.recognize(req) do |route, parameters|
         dispatcher = route.app
+        while dispatcher.class != ActionDispatch::Routing::RouteSet::Dispatcher
+          dispatcher = dispatcher.app
+        end
 
         env["REQUEST_METHOD"] = "OPTIONS"
 
         real_controller = dispatcher.controller(params, false)
         if real_controller
           env["action_dispatch.request.request_parameters"] = params
-          return dispatcher.instance_eval { dispatch(real_controller, action, env) }
+          to_return = dispatcher.instance_eval { dispatch(real_controller, action, env) }
+          if to_return
+            return to_return
+          else
+            return [200, {}, [""]] # Maybe for some bug?
+          end
         end
       end
     end
