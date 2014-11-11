@@ -35,7 +35,7 @@ module CanTable
 
     def set_options_header(table)
       allow_methods = table.map { |m| HTTP_VERBS[m] }.join(', ')
-      headers['Access-Control-Allow-Methods'] = allow_methods
+      headers['Allow'] = allow_methods
     end
 
     def resource_class
