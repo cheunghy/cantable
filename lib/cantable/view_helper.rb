@@ -1,12 +1,6 @@
 module CanTable
   module ViewHelpers
     include CanTable::ControllerInclusion
-    HTTP_VERBS = {
-      create: "POST",
-      read: "GET",
-      update: "PATCH",
-      destroy: "DELETE"
-    }
     def include_operation_permissions(resource, json = nil)
       table = can_table(resource) # like this: [:create,:read]
       operations = table.map do |action|
