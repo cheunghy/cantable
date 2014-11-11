@@ -21,7 +21,12 @@ module CanTable
   end
 
   module OptionsAction
-
+    HTTP_VERBS = {
+      create: "POST",
+      read: "GET",
+      update: "PATCH",
+      destroy: "DELETE"
+    }
     public
 
     def operation
