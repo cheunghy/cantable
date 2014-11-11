@@ -18,17 +18,28 @@ module CanTable
     public
 
     def operation
-      self.response_body = "some good stuff, haha"
-#      render nothing: true, status: 200
+      if !resource_class
+        self.response_body = "Bad Stuff Happens."
+      end
+      if params[:id]
+        resource = resource_class.find(params[:id])
+      else
+        resource = resource_class
+      end
+      self.response_body = can_table(resource)
       # if params[:id]
       #   resource = resource_class.find(params[:id])
+      # else
+      #   resource = resource_class
       # end
+
     end
 
     protected
 
-    # def resource_class
-    # end
+    def resource_class
+      controller_name.classify.constantize
+    end
 
     # def skdljflkjy
     # end
@@ -46,13 +57,23 @@ if defined? ActionController::Base
       include CanTable::OptionsAction
     end
   end
-
-  ActionController::Base.instance_eval do
-    def inherited(klass)
-      klass.class_eval do
-        include CanTable::OptionsAction
+  if ActionController::Base.method_defined? :inherited
+    ActionController::Base.instance_eval do
+      def inherited(klass)
+        klass.class_eval do
+          include CanTable::OptionsAction
+        end
+      end
+    end
+  else
+    ActionController::Base.instance_eval do
+      alias_method :inherited_old, :inherited
+      def inherited(klass)
+        klass.class_eval do
+          include CanTable::OptionsAction
+          inherited_old(klass)
+        end
       end
     end
   end
-
 end
