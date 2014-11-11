@@ -15,6 +15,7 @@ module CanTable
       actions.map do |action|
         table << action if can? action, resource
       end
+      p table
       table
     end
 
