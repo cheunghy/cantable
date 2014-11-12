@@ -4,7 +4,7 @@ module CanTable
   module ControllerInclusion
     HTTP_VERBS = {
       create: "POST",
-      read: "GET",
+      show: "GET",
       update: "PATCH",
       destroy: "DELETE",
       index: "GET"
@@ -30,7 +30,7 @@ module CanTable
   module OptionsAction
     HTTP_VERBS = {
       create: "POST",
-      read: "GET",
+      show: "GET",
       update: "PATCH",
       destroy: "DELETE",
       index: "GET"
