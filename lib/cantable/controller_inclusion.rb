@@ -6,7 +6,7 @@ module CanTable
       create: "POST",
       read: "GET",
       update: "PATCH",
-      destroy: "DELETE"
+      destroy: "DELETE",
       index: "GET"
     }
 
@@ -30,7 +30,7 @@ module CanTable
       create: "POST",
       read: "GET",
       update: "PATCH",
-      destroy: "DELETE"
+      destroy: "DELETE",
       index: "GET"
     }
     public
