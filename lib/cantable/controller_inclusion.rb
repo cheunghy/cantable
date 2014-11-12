@@ -7,6 +7,7 @@ module CanTable
       read: "GET",
       update: "PATCH",
       destroy: "DELETE"
+      list: "GET"
     }
 
     def can_table(resource)
@@ -30,6 +31,7 @@ module CanTable
       read: "GET",
       update: "PATCH",
       destroy: "DELETE"
+      list: "GET"
     }
     public
 
