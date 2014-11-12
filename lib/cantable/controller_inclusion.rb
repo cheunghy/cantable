@@ -15,7 +15,6 @@ module CanTable
       actions.map do |action|
         table << action if can? action, resource && !table.include?(action)
       end
-      p table
       table
     end
 
