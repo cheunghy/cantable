@@ -2,13 +2,6 @@ require 'cancancan'
 require_relative 'exception'
 module CanTable
   module ControllerInclusion
-    HTTP_VERBS = {
-      create: "POST",
-      show: "GET",
-      update: "PATCH",
-      destroy: "DELETE",
-      index: "GET"
-    }
 
     def can_table(resource)
       table = []
@@ -28,15 +21,6 @@ module CanTable
   end
 
   module OptionsAction
-    HTTP_VERBS = {
-      create: "POST",
-      show: "GET",
-      update: "PATCH",
-      destroy: "DELETE",
-      index: "GET"
-    }
-    public
-
     def operation
       resource = find_resource
       table = can_table(resource)
