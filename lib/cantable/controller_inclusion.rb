@@ -17,7 +17,7 @@ module CanTable
         actions = [:create, :index]
       else
         p "Resource is instance"
-        actions = [:create, :read, :update, :destroy]
+        actions = [:create, :show, :update, :destroy]
       end
       actions.map do |action|
         table << action if can? action, resource
