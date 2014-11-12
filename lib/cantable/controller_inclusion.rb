@@ -7,13 +7,13 @@ module CanTable
       read: "GET",
       update: "PATCH",
       destroy: "DELETE"
-      list: "GET"
+      index: "GET"
     }
 
     def can_table(resource)
       table = []
       if resource.class == Class
-        actions = [:create, :list]
+        actions = [:create, :index]
       else
         actions = [:create, :read, :update, :destroy]
       end
@@ -31,7 +31,7 @@ module CanTable
       read: "GET",
       update: "PATCH",
       destroy: "DELETE"
-      list: "GET"
+      index: "GET"
     }
     public
 
