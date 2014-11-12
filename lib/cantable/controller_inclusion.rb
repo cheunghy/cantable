@@ -11,9 +11,9 @@ module CanTable
 
     def can_table(resource)
       table = []
-      actions = [:create, :read, :update, :destory]
+      actions = [:create, :read, :update, :destory, :list]
       actions.map do |action|
-        table << action if can? action, resource
+        table << action if can? action, resource && !table.include?(action)
       end
       p table
       table
