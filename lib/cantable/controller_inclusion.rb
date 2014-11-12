@@ -6,10 +6,8 @@ module CanTable
     def can_table(resource)
       table = []
       if resource.class == Class
-        p "Resource is class"
         actions = [:create, :index]
       else
-        p "Resource is instance"
         actions = [:create, :show, :update, :destroy]
       end
       actions.map do |action|
