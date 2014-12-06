@@ -1,5 +1,13 @@
 cantable
 ========
-this gem is **UNDER DEVELOPMENT**, **DO NOT USE YET**
+Now this gem generate HTTP OPTIONS information using cancancan.
 
-Generate data to describe cancancan abilities.
+The implementation is dirty and with lots of private method calls.
+
+Also, this gem is **NOT** fully covered with tests.
+
+
+
+You can help and contribute to make it better.
+
+Any contribution is welcome.
